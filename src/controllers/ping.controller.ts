@@ -7,7 +7,7 @@ import {
   response,
   ResponseObject,
 } from '@loopback/rest';
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 import axios from 'axios';
 
 /**
@@ -54,44 +54,6 @@ export class PingController {
       url: this.req.url,
       headers: Object.assign({}, this.req.headers),
     };
-  }
-
-  @get('/products')
-
-  async getProducts() : Promise<any> {
-
-    try{
-
-      const url = 'https://skillnet.vtexcommercestable.com.br/api/catalog/pvt/product/40000077';
-
-      const response = await fetch(url,{
-
-        method:'GET',
-
-        headers:{
-
-          'Content-Type': 'application/json',
-
-          'X-VTEX-API-AppKey':'vtexappkey-skillnet-VOZXMR',
-
-          'X-VTEX-API-AppToken':'RVXQMZYNRRZNTMEURBRBHPRCWYMITOEUNUPISMZTCCAGROZIUTHBZFUCZKIVIWSHJPAREKDSZSKDTFKGQZHNBKKXLIANVJLFBTJJBUWJJNDQTJVQKXLOKCMFYHWORAVT'
-
-        }
-
-      });
-
-      const data = await response.json();
-
-      return data;
-
-    }
-
-    catch(error){
-
-      console.log(error);
-
-    }
-
   }
 
   @get('/call-api/{id}')
