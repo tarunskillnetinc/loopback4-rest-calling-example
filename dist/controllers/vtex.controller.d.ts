@@ -5,4 +5,5 @@ export declare class VtexController {
     getVtexCategoryTree(): Promise<any>;
     getVtexProductDetails(productId: string): Promise<any>;
     gettransformedVtexProductDetails(productId: string): Promise<any>;
+    getBestSellingProducts(): Promise<any>;
 }

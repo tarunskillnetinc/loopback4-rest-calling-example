@@ -1,7 +1,7 @@
 // Uncomment these imports to begin using these cool features!
 
 import {inject} from '@loopback/core';
-import { ServiceCategory, TreesService} from '../services';
+import { TreesService} from '../services';
 import {
   Request,
   RestBindings,
@@ -44,4 +44,33 @@ export class CategoryController {
       throw error;
     }
   }
+
+  @get('/spryker-best-selling-products')
+  @response(200, {
+    description: 'Get best selling products from the external API',
+  })
+  async getBestSellingProducts(): Promise<any> {
+    try {
+      const bestSellingProducts = await this.treesService.getBestSellingProduct();
+      return bestSellingProducts;
+    } catch (error) {
+      // Handle errors
+      throw error;
+    }
+  }
+
+  @get('/spryker-best-selling/{query}')
+  @response(200, {
+    description: 'Get VTEX catalog search suggestions from the external API',
+  })
+  async getCatalogSearchSuggestions(@param.path.string('query') query: string): Promise<any[]> {
+    try {
+      const catalogSearchSuggestions = await this.treesService.getCatalogSearchSuggestions(query);
+      return catalogSearchSuggestions;
+    } catch (error) {
+      // Handle errors
+      throw error;
+    }
+  }
+
 }

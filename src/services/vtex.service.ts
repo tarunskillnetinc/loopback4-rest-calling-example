@@ -41,6 +41,12 @@ export class VtexService {
     const transformedResponse = this.transformProductDetails(response);
     return transformedResponse;
   }
+
+  async getBestSellingProducts(): Promise<any> {
+    const endpoint = `api/catalog/pvt/collection/143/products`;
+    return this.fetchFromEndpoint(endpoint);
+  }
+
   private transformProductDetails(response: any): any {
     return {
       productId: response.Id,

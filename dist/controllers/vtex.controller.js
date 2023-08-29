@@ -15,7 +15,6 @@ let VtexController = exports.VtexController = class VtexController {
             return vtexCategoryTree;
         }
         catch (error) {
-            // Handle errors
             throw error;
         }
     }
@@ -25,7 +24,6 @@ let VtexController = exports.VtexController = class VtexController {
             return vtexProductDetails;
         }
         catch (error) {
-            // Handle errors
             throw error;
         }
     }
@@ -35,7 +33,15 @@ let VtexController = exports.VtexController = class VtexController {
             return vtexProductDetails;
         }
         catch (error) {
-            // Handle errors
+            throw error;
+        }
+    }
+    async getBestSellingProducts() {
+        try {
+            const bestSellingProducts = await this.vtexService.getBestSellingProducts();
+            return bestSellingProducts;
+        }
+        catch (error) {
             throw error;
         }
     }
@@ -69,6 +75,15 @@ tslib_1.__decorate([
     tslib_1.__metadata("design:paramtypes", [String]),
     tslib_1.__metadata("design:returntype", Promise)
 ], VtexController.prototype, "gettransformedVtexProductDetails", null);
+tslib_1.__decorate([
+    (0, rest_1.get)('/vtex-best-selling-products'),
+    (0, rest_1.response)(200, {
+        description: 'Get VTEX best selling products from the external API',
+    }),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", []),
+    tslib_1.__metadata("design:returntype", Promise)
+], VtexController.prototype, "getBestSellingProducts", null);
 exports.VtexController = VtexController = tslib_1.__decorate([
     tslib_1.__param(0, (0, core_1.inject)('services.VtexService')),
     tslib_1.__metadata("design:paramtypes", [services_1.VtexService])

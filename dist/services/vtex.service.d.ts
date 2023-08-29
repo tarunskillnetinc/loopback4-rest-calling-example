@@ -6,5 +6,6 @@ export declare class VtexService {
     getVtexCategoryTree(): Promise<any>;
     getVtexProductDetails(productId: string): Promise<any>;
     getTransformedVtexProductDetails(productId: string): Promise<any>;
+    getBestSellingProducts(): Promise<any>;
     private transformProductDetails;
 }

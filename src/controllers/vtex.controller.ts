@@ -43,4 +43,17 @@ export class VtexController {
       throw error;
     }
   }
+
+  @get('/vtex-best-selling-products')
+  @response(200, {
+    description: 'Get VTEX best selling products from the external API',
+  })
+  async getBestSellingProducts(): Promise<any> {
+    try {
+      const bestSellingProducts = await this.vtexService.getBestSellingProducts();
+      return bestSellingProducts;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

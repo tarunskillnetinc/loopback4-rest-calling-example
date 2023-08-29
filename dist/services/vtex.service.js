@@ -21,7 +21,6 @@ let VtexService = exports.VtexService = class VtexService {
             return response.data;
         }
         catch (error) {
-            // Handle errors
             throw error;
         }
     }
@@ -40,8 +39,11 @@ let VtexService = exports.VtexService = class VtexService {
         const transformedResponse = this.transformProductDetails(response);
         return transformedResponse;
     }
+    async getBestSellingProducts() {
+        const endpoint = `api/catalog/pvt/collection/143/products`;
+        return this.fetchFromEndpoint(endpoint);
+    }
     transformProductDetails(response) {
-        // Example transformation: Include only specific fields and nest them
         return {
             productId: response.Id,
             productName: response.Name,
@@ -49,7 +51,6 @@ let VtexService = exports.VtexService = class VtexService {
                 departmentId: response.DepartmentId,
                 categoryId: response.CategoryId,
             },
-            // Add more transformations as needed
         };
     }
 };

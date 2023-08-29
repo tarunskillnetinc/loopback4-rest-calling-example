@@ -4,4 +4,6 @@ export declare class CategoryController {
     constructor(treesService: TreesService);
     getCategoryTrees(): Promise<any>;
     getConcreteProductDetails(productId: string): Promise<any>;
+    getBestSellingProducts(): Promise<any>;
+    getCatalogSearchSuggestions(query: string): Promise<any[]>;
 }
